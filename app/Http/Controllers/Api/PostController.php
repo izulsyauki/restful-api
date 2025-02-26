@@ -60,7 +60,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post = Post::find($post->id);
+
+        return new PostResource(true, 'Detail Data Post', $post);
     }
 
     /**
