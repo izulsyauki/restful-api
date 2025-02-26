@@ -117,6 +117,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post = Post::find($post->id);
+
+        Storage::delete('public/posts/' . basename($post->image));
+
+        $post->delete();
+
+        return new PostResource(true, 'Data Post Succesfully Deleted', null);
     }
 }
